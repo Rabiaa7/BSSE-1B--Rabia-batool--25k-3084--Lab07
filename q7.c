@@ -1,30 +1,30 @@
-
 #include <stdio.h>
 
-    int main() {
-        int arr[10];
-        for (int i = 0; i < 10; i++) {
-            printf("Enter %d integers:",i);
-            scanf("%d", &arr[i]);
-        }
+int main() {
+    int arr[10];
+    int i, j;
+    int found[1000] = {0}; // assuming IDs are within range 0–999 (you can adjust as needed)
 
-        for (int i = 0; i < 10; i++) {
-            if (arr[i] == -1)
-                continue;
-
-            for (int j = i+1; j < 10; j++) {
-                if (arr[i] == arr[j]) {
-                    arr[j] = -1;
-                }
-            }
-        }
-
-        printf("Updated array: ");
-        for (int i = 0; i < 10; i++) {
-            printf("%d ", arr[i]);
-        }
-
-        return 0;
+    printf("Enter 10 integers: ");
+    for(i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
     }
+
+    for(i = 0; i < 10; i++) {
+        if(found[arr[i]] == 1) {
+            arr[i] = -1; // mark duplicate
+        } else {
+            found[arr[i]] = 1; // mark as seen
+        }
+    }
+
+    printf("\nUpdated array: ");
+    for(i = 0; i < 10; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
 
 
